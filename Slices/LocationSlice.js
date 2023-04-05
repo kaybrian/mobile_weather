@@ -19,12 +19,8 @@ export const getLocation = createAsyncThunk(
 
 
         try {
-            fetch(`https://${API_URL}/json?token=${API_TOKEN}`).then(
-                (response) => response.json()
-            ).then(
-                (jsonResponse) => console.log(jsonResponse)
-            )
-
+            const res = await fetch(`https://${API_URL}/json?token=${API_TOKEN}`)
+            return await res.json()
         } catch (error) {
             return error
         }
@@ -57,6 +53,6 @@ export const locationSlice = createSlice({
 
 export default locationSlice.reducer
 export const getUserLocation = (state) => state.location.data
-
+export const userCods = (state) => state.location.data.loc
 export const getLocationStatus = (state) => state.location.status
 export const getLOcationErrors = (state) => state.location.errors

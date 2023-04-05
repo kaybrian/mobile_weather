@@ -34,8 +34,10 @@ const Location = () => {
                 dispatch(getLocation(userip))
             }, 5000)
         } else if (locationstatus === 'succeeded') {
-            console.log(realLocation)
-            navigation.navigate('HomeScreen')
+            // console.log(realLocation)
+            navigation.navigate('HomeScreen', {
+                location:realLocation
+            })
         } else if (locationstatus === 'failed') {
             console('error')
         }
