@@ -5,6 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_KEY } from '../api_token';
 
 
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?q`
 
 
 const initialState = {
@@ -17,10 +18,9 @@ const initialState = {
 export const getWeatherInfo = createAsyncThunk(
     'weather/getWeatherInfo',
     async (city) => {
-        const API_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${API_KEY}&contentType=json`
 
         try {
-            const res = await fetch(API_URL)
+            const res = await fetch(`${API_URL}=${city}&appid=${API_KEY}`)
             return await res.json()
         } catch (error) {
             return error
