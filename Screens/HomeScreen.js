@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { getUserLocation } from '../Slices/LocationSlice';
 import moment from 'moment';
 import Weekly from '../Components/Weekly';
+import { Button } from '@rneui/base';
 
 const data = [
     {
@@ -52,8 +53,9 @@ const HomeScreen = () => {
 
     })
     return (
-        <SafeAreaView style={tw`bg-[#FFE142]`}>
-            <View style={tw`flex flex-row space-x-2 px-3 flex-grow-1 py-2`}>
+        <SafeAreaView style={tw`bg-[#FFE142] pb-10 mb-10`}>
+
+            <View style={tw`flex flex-row space-x-2 px-3 flex-grow-1 py-6`}>
                 <Icons.Bars2Icon
                     size={35}
                     color="#121212"
@@ -61,74 +63,77 @@ const HomeScreen = () => {
                 <Text style={tw`text-3xl grow font-extrabold items-center pl-24`}>Kigali</Text>
             </View>
 
-            <View style={tw`mt-3 px-4 items-center`}>
-                <View style={tw`bg-black py-2 px-5 rounded-full `}>
-                    <Text style={tw`text-md font-light text-white `}>Monday, 23 2023</Text>
-                </View>
-                <View style={tw`mt-2 mb-2`}>
-                    <Text style={tw`text-lg font-semibold`}>Sunny</Text>
-                </View>
-                <View style={tw``}>
-                    <Text style={tw`font-semibold -mr-9 text-[150px]`}>34{`\u00B0`}</Text>
-                </View>
-            </View>
+            <ScrollView showsVerticalScrollIndicator={false} className="pb-10">
 
-            <View style={tw`px-4`}>
-                <Text style={tw`text-lg font-bold py-2`}>Daily Summary</Text>
-                <Text style={tw`text-sm font-medium  mb-3 leading-5`}>If you do not see some of the parameters in your API response it means that these weather phenomena are just not happened for the time of measurement for the city or location chosen</Text>
-            </View>
-
-            <View style={tw` px-4 py-2`}>
-                <View style={tw`bg-black rounded-md mb-2 w-full p-3 flex flex-row items-center`}>
-                    <View style={tw`px-4 pt-4 basis-1/3 items-center mb-3`}>
-                        <Icons.SpeakerWaveIcon
-                            color="#FFE142"
-                            size={30}
-                        />
-                        <Text style={tw`text-[#FFE142] pt-2 text-lg font-semibold`}>4 KM/h</Text>
-                        <Text style={tw`text-[#FFE142] text-xs font-semibold`}>4 KM/h</Text>
+                <View style={tw`mt-3 px-4 items-center`}>
+                    <View style={tw`bg-black py-2 px-5 rounded-full `}>
+                        <Text style={tw`text-sm font-light text-[#FFE142] `}>Monday, 23 2023</Text>
                     </View>
-                    <View style={tw`px-4 pt-4 basis-1/3 items-center mb-3`}>
-                        <Icons.StarIcon
-                            color="#FFE142"
-                            size={30}
-                        />
-                        <Text style={tw`text-[#FFE142] pt-2 text-lg font-semibold`}>4 KM/h</Text>
-                        <Text style={tw`text-[#FFE142] text-xs font-semibold`}>4 KM/h</Text>
+                    <View style={tw`mt-2 mb-2`}>
+                        <Text style={tw`text-lg font-semibold`}>Sunny</Text>
                     </View>
-                    <View style={tw`px-4 pt-4 basis-1/3 items-center mb-3`}>
-                        <Icons.EyeIcon
-                            color="#FFE142"
-                            size={30}
-                        />
-                        <Text style={tw`text-[#FFE142] pt-2 text-lg font-semibold`}>4 KM/h</Text>
-                        <Text style={tw`text-[#FFE142] text-xs font-semibold`}>4 KM/h</Text>
+                    <View style={tw``}>
+                        <Text style={tw`font-semibold -mr-9 text-[150px]`}>34{`\u00B0`}</Text>
                     </View>
                 </View>
-            </View>
 
-            <View style={tw`mt-1 px-4`}>
-                <View style={tw`flex flex-row space-x-2 items-center justify-between`}>
-                    <Text style={tw`font-semibold text-lg pb-1`}>Weekly Forecast</Text>
-                    <Icons.ArrowRightIcon
-                        size={35}
-                        color="black"
-                    />
+                <View style={tw`px-4`}>
+                    <Text style={tw`text-lg font-bold py-2`}>Daily Summary</Text>
+                    <Text style={tw`text-sm font-medium  mb-3 leading-5`}>If you do not see some of the parameters in your API response it means that these weather phenomena are just not happened for the time of measurement for the city or location chosen</Text>
                 </View>
-                <ScrollView
-                style={tw`pb-10`}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
 
-                >
-                    {
-                        data?.map((item) =>(
-                            <Weekly />
-                        ))
-                    }
+                <View style={tw` px-4 py-2`}>
+                    <View style={tw`bg-black rounded-md mb-2 w-full p-3 flex flex-row items-center`}>
+                        <View style={tw`px-4 pt-4 basis-1/3 items-center mb-3`}>
+                            <Icons.SpeakerWaveIcon
+                                color="#FFE142"
+                                size={30}
+                            />
+                            <Text style={tw`text-[#FFE142] pt-2 text-lg font-semibold`}>4 KM/h</Text>
+                            <Text style={tw`text-[#FFE142] text-xs font-semibold`}>4 KM/h</Text>
+                        </View>
+                        <View style={tw`px-4 pt-4 basis-1/3 items-center mb-3`}>
+                            <Icons.SpeakerWaveIcon
+                                color="#FFE142"
+                                size={30}
+                            />
+                            <Text style={tw`text-[#FFE142] pt-2 text-lg font-semibold`}>4 KM/h</Text>
+                            <Text style={tw`text-[#FFE142] text-xs font-semibold`}>4 KM/h</Text>
+                        </View>
+                        <View style={tw`px-4 pt-4 basis-1/3 items-center mb-3`}>
+                            <Icons.EyeIcon
+                                color="#FFE142"
+                                size={30}
+                            />
+                            <Text style={tw`text-[#FFE142] pt-2 text-lg font-semibold`}>4 KM/h</Text>
+                            <Text style={tw`text-[#FFE142] text-xs font-semibold`}>4 KM/h</Text>
+                        </View>
+                    </View>
+                </View>
 
-                </ScrollView>
-            </View>
+                <View style={tw`mt-1 px-4`}>
+                    <View style={tw`flex flex-row space-x-2 items-center justify-between`}>
+                        <Text style={tw`font-semibold text-lg pb-1`}>Weekly Forecast</Text>
+                        <Icons.ArrowRightIcon
+                            size={35}
+                            color="black"
+                        />
+                    </View>
+                    <ScrollView
+                        style={tw`pb-10`}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+
+                    >
+                        {
+                            data?.map((item) => (
+                                <Weekly />
+                            ))
+                        }
+
+                    </ScrollView>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     )
 }
