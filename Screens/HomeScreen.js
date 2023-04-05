@@ -58,7 +58,6 @@ const HomeScreen = () => {
     }, [getLocation.city, dispatch])
 
     if (weatherinfo) {
-        console.log(weatherinfo.dt)
         return (
             <SafeAreaView style={tw`bg-[#FFE142] pb-10 mb-10`}>
 
@@ -77,7 +76,9 @@ const HomeScreen = () => {
                             <Text style={tw`text-sm font-light text-[#FFE142] `}>Monday, 23 2023</Text>
                         </View>
                         <View style={tw`mt-2 mb-2`}>
-                            <Text style={tw`text-lg font-semibold`}>Bew</Text>
+                            <Text style={tw`text-lg font-semibold`}>
+
+                            </Text>
                         </View>
                         <View style={tw``}>
                             <Text style={tw`font-semibold -mr-9 text-[150px]`}>34{`\u00B0`}</Text>
@@ -125,7 +126,7 @@ const HomeScreen = () => {
 
                     <View style={tw`mt-1 px-4`}>
                         <View style={tw`flex flex-row ml-2 items-center justify-between`}>
-                            <Text style={tw`font-semibold text-lg pb-1`}>Weekly Forecast</Text>
+                            <Text style={tw`font-semibold text-lg pb-1`}>Temperature Feelings</Text>
                             <Icons.ArrowRightIcon
                                 size={35}
                                 color="black"
