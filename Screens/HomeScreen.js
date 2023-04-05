@@ -2,12 +2,13 @@ import { View, Text, SafeAreaView, ScrollView, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import tw from 'twrnc'
 import * as Icons from "react-native-heroicons/solid";
-import { useSelector } from 'react-redux';
-import { getUserLocation,userCods } from '../Slices/LocationSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserLocation } from '../Slices/LocationSlice';
 import moment from 'moment';
 import Weekly from '../Components/Weekly';
 import { Icon } from '@rneui/base'
-import { useNavigation } from '@react-navigation/native';
+import { getWeatherInfo,getweatherData } from '../Slices/WeatherSlice';
+
 
 const data = [
     {
@@ -42,8 +43,21 @@ const data = [
     }
 ]
 
+
+
+
 const HomeScreen = () => {
+    const dispatch = useDispatch()
     const getLocation = useSelector(getUserLocation);
+    const weatherinfo = useSelector(getweatherData);
+
+    useEffect(() => {
+        if(getLocation.city !== undefined){
+            dispatch(getWeatherInfo(getLocation.city))
+        }
+    })
+
+    console.log(weatherinfo)
 
     return (
         <SafeAreaView style={tw`bg-[#FFE142] pb-10 mb-10`}>
